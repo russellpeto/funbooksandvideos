@@ -4,12 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FBV
+namespace FBVLibrary.Controllers
 {
-    public enum MembershipTypes
+    class CustomerController
     {
-        Book,
-        Video,
-        Premium
+
     }
 }

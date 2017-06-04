@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FBV
 {
-    enum MediaItemTypes
+    public enum MediaItemTypes
     {
         Book,
         Video

@@ -3,11 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
+using System.ComponentModel.DataAnnotations;
 
-namespace FBV.objects
+namespace FBV.Objects
 {
     public class Address
     {
+        [Key]
+        public int AddressID { get; set; }
+
         public string doorNumber { get; set; }
         public string buildingName { get; set; }
         public string streetNumber { get; set; }

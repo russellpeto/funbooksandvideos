@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations;
 
-namespace FBV.objects
+namespace FBV.Objects
 {
-    class MediaItem : OrderItem
+    public class MediaItem : OrderItem
     {
-        public MediaItemTypes type { get; set; }
+        public MediaItemTypes mediaItemType { get; set; }
     }
 }

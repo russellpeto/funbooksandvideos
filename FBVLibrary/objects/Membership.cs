@@ -4,11 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FBV.objects
+namespace FBV.Objects
 {
-    class Membership : OrderItem
+    public class Membership : OrderItem
     {
-        public MembershipTypes type { get; set; }
+        public MembershipTypes membershipType { get; set; }
         public DateTime startDate { get; set; }
         public DateTime endDate { get; set; }
     }

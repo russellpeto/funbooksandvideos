@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.Entity;
 
 namespace FBV.objects
 {
-    public class customer
+    public class Customer
     {
-        public Address address { get; set; }
-        public string customerName { get; set; }
         public int customerID { get; set; }
+        public string customerName { get; set; }
+        public Address address { get; set; }
     }
 }

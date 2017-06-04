@@ -10,6 +10,6 @@ namespace FBV.objects
     {
         public int purchaseOrderID { get; set; }
         public DateTime timeOrderPlaced { get; set; }
-
+        public List<OrderItem> items { get; set; }
     }
 }

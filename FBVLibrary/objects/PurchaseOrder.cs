@@ -12,6 +12,18 @@ namespace FBV.Objects
         [Key]
         public int purchaseOrderID { get; set; }
         public DateTime timeOrderPlaced { get; set; }
-        public List<OrderItem> items { get; set; }
+        public List<PurchaseOrderItem> purchaseOrderItems { get; set; }
+        public decimal totalPrice
+        {
+            get
+            {
+                decimal total = 0;
+                foreach(PurchaseOrderItem p in purchaseOrderItems)
+                {
+                    total += p.unitPrice;
+                }
+                return total;
+            }
+        }
     }
 }

@@ -13,5 +13,6 @@ namespace FBV
         public DbSet<Customer> Customers { get; set; }
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<PurchaseOrder> PurchaseOrders { get; set; }
+        public DbSet<MembershipEntry> MembershipEntries { get; set; }
     }
 }

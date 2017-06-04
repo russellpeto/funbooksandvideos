@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace FBV
 {
-    public enum MembershipTypes
+    public enum OrderItemType
     {
         Book,
         Video,
-        Premium
+        BookClub,
+        VideoClub,
+        PremiumClub
     }
 }

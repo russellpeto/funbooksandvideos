@@ -14,5 +14,6 @@ namespace FBV.Objects
         public int customerID { get; set; }
         public string customerName { get; set; }
         public Address address { get; set; }
+        public List<MembershipEntry> memberships { get; set; }
     }
 }

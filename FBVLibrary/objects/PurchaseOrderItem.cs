@@ -7,13 +7,17 @@ using System.ComponentModel.DataAnnotations;
 
 namespace FBV.Objects
 {
-    public class OrderItem
+    public class PurchaseOrderItem
     {
         [Key]
+        public int purchaseOrderItemID { get; set; }
         public int orderItemID { get; set; }
+
         public string shortDescription { get; set; }
         public string fullDescription { get; set; }
         public decimal unitPrice { get; set; }
-        public OrderItemType orderType { get; set; }
+        public OrderItemType orderItemType { get; set; }
+        public DateTime startDate { get; set; }
+        public DateTime endDate { get; set; }
     }
 }

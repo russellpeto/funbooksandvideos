@@ -51,7 +51,6 @@
   <ItemGroup>
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="FBVDatabaseContext.cs" />
-    <Compile Include="MembershipTypes.cs" />
     <Compile Include="Migrations\201706042128105_migration001.cs" />
     <Compile Include="Migrations\201706042128105_migration001.Designer.cs">
       <DependentUpon>201706042128105_migration001.cs</DependentUpon>
@@ -60,14 +59,34 @@
     <Compile Include="Migrations\201706042143388_migration002.Designer.cs">
       <DependentUpon>201706042143388_migration002.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201706042257035_migration003.cs" />
+    <Compile Include="Migrations\201706042257035_migration003.Designer.cs">
+      <DependentUpon>201706042257035_migration003.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706042305284_migration0031.cs" />
+    <Compile Include="Migrations\201706042305284_migration0031.Designer.cs">
+      <DependentUpon>201706042305284_migration0031.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706042314392_migration004.cs" />
+    <Compile Include="Migrations\201706042314392_migration004.Designer.cs">
+      <DependentUpon>201706042314392_migration004.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706042325321_migration005.cs" />
+    <Compile Include="Migrations\201706042325321_migration005.Designer.cs">
+      <DependentUpon>201706042325321_migration005.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706042341200_migration0051.cs" />
+    <Compile Include="Migrations\201706042341200_migration0051.Designer.cs">
+      <DependentUpon>201706042341200_migration0051.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Objects\Address.cs" />
     <Compile Include="Objects\Customer.cs" />
-    <Compile Include="Objects\MediaItem.cs" />
-    <Compile Include="MediaItemTypes.cs" />
-    <Compile Include="Objects\Membership.cs" />
+    <Compile Include="Objects\MembershipEntry.cs" />
     <Compile Include="Objects\OrderItem.cs" />
     <Compile Include="Objects\PurchaseOrder.cs" />
+    <Compile Include="Objects\PurchaseOrderItem.cs" />
+    <Compile Include="OrderTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -80,6 +99,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706042143388_migration002.resx">
       <DependentUpon>201706042143388_migration002.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706042257035_migration003.resx">
+      <DependentUpon>201706042257035_migration003.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706042305284_migration0031.resx">
+      <DependentUpon>201706042305284_migration0031.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706042314392_migration004.resx">
+      <DependentUpon>201706042314392_migration004.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706042325321_migration005.resx">
+      <DependentUpon>201706042325321_migration005.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706042341200_migration0051.resx">
+      <DependentUpon>201706042341200_migration0051.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

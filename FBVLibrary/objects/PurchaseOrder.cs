@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using FBV.Enums;
 
 namespace FBV.Objects
 {
@@ -11,14 +12,16 @@ namespace FBV.Objects
     {
         [Key]
         public int purchaseOrderID { get; set; }
+        public int customerID { get; set; }
         public DateTime timeOrderPlaced { get; set; }
-        public List<PurchaseOrderItem> purchaseOrderItems { get; set; }
+        public PurchaseOrderStatus purchaseOrderStatus { get; set; }
+        public List<LineItems> purchaseOrderItems { get; set; }
         public decimal totalPrice
         {
             get
             {
                 decimal total = 0;
-                foreach(PurchaseOrderItem p in purchaseOrderItems)
+                foreach(LineItems p in purchaseOrderItems)
                 {
                     total += p.unitPrice;
                 }

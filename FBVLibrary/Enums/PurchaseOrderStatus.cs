@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FBV
+namespace FBV.Enums
 {
-    public enum OrderItemType
+    public enum PurchaseOrderStatus
     {
-        Book,
-        Video,
-        BookClub,
-        VideoClub,
-        PremiumClub
+        notYetOrdered,
+        ordered,
+        completed,
+        refunded
     }
 }

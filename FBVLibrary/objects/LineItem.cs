@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
+using FBV.Enums;
 
 namespace FBV.Objects
 {
-    public class PurchaseOrderItem
+    public class LineItems
     {
         [Key]
-        public int purchaseOrderItemID { get; set; }
+        public int lineItemID { get; set; }
         public int orderItemID { get; set; }
 
         public string shortDescription { get; set; }

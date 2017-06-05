@@ -8,7 +8,7 @@ using FBV.Enums;
 
 namespace FBV.Objects
 {
-    public class LineItems
+    public class LineItem
     {
         [Key]
         public int lineItemID { get; set; }

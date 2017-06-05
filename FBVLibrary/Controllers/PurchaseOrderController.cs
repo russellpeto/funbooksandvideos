@@ -9,7 +9,7 @@ using FBV.Enums;
 
 namespace FBV.Controllers
 {
-    class PurchaseOrderController
+    public class PurchaseOrderController
     {
         public PurchaseOrder NewPurchaseOrder(Customer thisCustomer)
         {
@@ -17,8 +17,21 @@ namespace FBV.Controllers
             {
                 PurchaseOrder createdPurchaseOrder = db.PurchaseOrders.Create();
                 createdPurchaseOrder.customerID = thisCustomer.customerID;
+                createdPurchaseOrder.purchaseOrderStatus = PurchaseOrderStatus.notYetOrdered;
+                db.PurchaseOrders.Add(createdPurchaseOrder);
+                db.SaveChanges();
 
                 return createdPurchaseOrder;
+            }
+        }
+        public PurchaseOrder NewPurchaseOrder(PurchaseOrder newPurchaseOrder)
+        {
+            using (var db = new FBVDatabaseContext())
+            {
+                db.PurchaseOrders.Add(newPurchaseOrder);
+                db.SaveChanges();
+
+                return newPurchaseOrder;
             }
         }
 
@@ -48,6 +61,59 @@ namespace FBV.Controllers
             }
         }
 
+        public PurchaseOrder addToPurchaseOrder(OrderItem orderItem, PurchaseOrder thisPurchaseOrder)
+        {
+            using (var db = new FBVDatabaseContext())
+            {
+                LineItem lineItem = new LineItem();
+
+                lineItem.fullDescription = orderItem.fullDescription;
+                lineItem.shortDescription = orderItem.shortDescription;
+                lineItem.unitPrice = orderItem.unitPrice;
+                lineItem.orderItemID = orderItem.orderItemID;
+                lineItem.orderItemType = orderItem.orderType;
+                switch (lineItem.orderItemType)
+                {
+                    case OrderItemType.BookClub:
+                        lineItem.startDate = DateTime.Now;
+                        lineItem.endDate = DateTime.Now.AddYears(1);
+                        break;
+                    case OrderItemType.VideoClub:
+                        lineItem.startDate = DateTime.Now;
+                        lineItem.endDate = DateTime.Now.AddYears(1);
+                        break;
+                    case OrderItemType.PremiumClub:
+                        lineItem.startDate = DateTime.Now;
+                        lineItem.endDate = DateTime.Now.AddYears(1);
+                        break;
+                    default:
+                        break;
+                }
+
+                var purchaseOrderToUpdate = db.PurchaseOrders.Find(thisPurchaseOrder.purchaseOrderID);
+                purchaseOrderToUpdate.purchaseOrderItems.Add(lineItem);
+
+                db.SaveChanges();
+
+                return purchaseOrderToUpdate;
+            }
+        }
+
+        public PurchaseOrder removeFromPurchaseOrder(OrderItem orderItem, PurchaseOrder thisPurchaseOrder)
+        {
+            using (var db = new FBVDatabaseContext())
+            {
+                PurchaseOrder orderToAmend = db.PurchaseOrders.Find(thisPurchaseOrder.purchaseOrderID);
+
+                LineItem itemToRemove = orderToAmend.purchaseOrderItems.Find(x => x.orderItemID == orderItem.orderItemID);
+                orderToAmend.purchaseOrderItems.Remove(itemToRemove);
+
+                db.SaveChanges();
+
+                return orderToAmend;
+            }
+        }
+
         /// <summary>
         /// Checks to see if there is a membership in the purchase order, if so, immediately implements it in the DB
         /// </summary>
@@ -56,7 +122,7 @@ namespace FBV.Controllers
         {
             using (var db = new FBVDatabaseContext())
             {
-                foreach(LineItems i in thisPurchaseOrder.purchaseOrderItems)
+                foreach(LineItem i in thisPurchaseOrder.purchaseOrderItems)
                 {
                     MembershipEntry newMembership = db.MembershipEntries.Create();
                     newMembership.customerID = thisPurchaseOrder.customerID;
@@ -97,7 +163,7 @@ namespace FBV.Controllers
             using (var db = new FBVDatabaseContext())
             {
                 bool needsShipping = false;
-                foreach(LineItems i in thisPurchaseOrder.purchaseOrderItems)
+                foreach(LineItem i in thisPurchaseOrder.purchaseOrderItems)
                 {
                     if(i.orderItemType == OrderItemType.Book)
                     {

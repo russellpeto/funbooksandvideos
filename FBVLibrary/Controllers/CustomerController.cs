@@ -7,13 +7,26 @@ using FBV.Objects;
 
 namespace FBV.Controllers
 {
-    class CustomerController
+    public class CustomerController
     {
         public Customer NewCustomer()
         {
             using(var db = new FBVDatabaseContext())
             {
-                return db.Customers.Create();
+                Customer newCustomer = db.Customers.Create();
+                db.Customers.Add(newCustomer);
+                db.SaveChanges();
+
+                return newCustomer;
+            }
+        }
+        public Customer NewCustomer(Customer newCustomer)
+        {
+            using (var db = new FBVDatabaseContext())
+            {
+                db.Customers.Add(newCustomer);
+                db.SaveChanges();
+                return newCustomer;
             }
         }
         public Customer UpdateCustomer(Customer customerToUpdate)

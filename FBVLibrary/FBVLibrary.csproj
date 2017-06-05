@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\CustomerController.cs" />
+    <Compile Include="Controllers\OrderItemController.cs" />
     <Compile Include="Controllers\PurchaseOrderController.cs" />
     <Compile Include="FBVDatabaseContext.cs" />
     <Compile Include="Migrations\201706042128105_migration001.cs" />
@@ -83,6 +84,18 @@
     <Compile Include="Migrations\201706050029380_migration006.cs" />
     <Compile Include="Migrations\201706050029380_migration006.Designer.cs">
       <DependentUpon>201706050029380_migration006.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706050128045_migration007.cs" />
+    <Compile Include="Migrations\201706050128045_migration007.Designer.cs">
+      <DependentUpon>201706050128045_migration007.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706050948046_migrationA.cs" />
+    <Compile Include="Migrations\201706050948046_migrationA.Designer.cs">
+      <DependentUpon>201706050948046_migrationA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201706051011088_finalMigration.cs" />
+    <Compile Include="Migrations\201706051011088_finalMigration.Designer.cs">
+      <DependentUpon>201706051011088_finalMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Objects\Address.cs" />
@@ -124,6 +137,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201706050029380_migration006.resx">
       <DependentUpon>201706050029380_migration006.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706050128045_migration007.resx">
+      <DependentUpon>201706050128045_migration007.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706050948046_migrationA.resx">
+      <DependentUpon>201706050948046_migrationA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201706051011088_finalMigration.resx">
+      <DependentUpon>201706051011088_finalMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

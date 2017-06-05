@@ -15,13 +15,13 @@ namespace FBV.Objects
         public int customerID { get; set; }
         public DateTime timeOrderPlaced { get; set; }
         public PurchaseOrderStatus purchaseOrderStatus { get; set; }
-        public List<LineItems> purchaseOrderItems { get; set; }
+        public List<LineItem> purchaseOrderItems { get; set; }
         public decimal totalPrice
         {
             get
             {
                 decimal total = 0;
-                foreach(LineItems p in purchaseOrderItems)
+                foreach(LineItem p in purchaseOrderItems)
                 {
                     total += p.unitPrice;
                 }

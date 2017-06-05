@@ -14,6 +14,18 @@ namespace FBV.Objects
         public int customerID { get; set; }
         public string customerName { get; set; }
         public Address address { get; set; }
-        public List<MembershipEntry> memberships { get; set; }
+        public List<MembershipEntry> memberships
+        {
+            get
+            {
+                using (var db = new FBV.FBVDatabaseContext())
+                {
+                    var memberships = (from x in db.MembershipEntries
+                                where x.customerID == customerID
+                                select x).ToList();
+                    return memberships;
+                }
+            }
+        }
     }
 }

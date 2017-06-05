@@ -59,25 +59,62 @@ namespace FBV.Controllers
                 foreach(LineItems i in thisPurchaseOrder.purchaseOrderItems)
                 {
                     MembershipEntry newMembership = db.MembershipEntries.Create();
+                    newMembership.customerID = thisPurchaseOrder.customerID;
+                    newMembership.expiryDate = DateTime.Now.AddYears(1);
+                    newMembership.lineItemID = i.lineItemID;
                     switch (i.orderItemType)
                     {
                         case OrderItemType.BookClub:
                             newMembership.bookClubMembership = true;
+                            db.MembershipEntries.Add(newMembership);
+                            db.SaveChanges();
                             break;
                         case OrderItemType.PremiumClub:
                             newMembership.bookClubMembership = true;
                             newMembership.videoClubMembership = true;
+                            db.MembershipEntries.Add(newMembership);
+                            db.SaveChanges();
                             break;
                         case OrderItemType.VideoClub:
                             newMembership.videoClubMembership = true;
+                            db.MembershipEntries.Add(newMembership);
+                            db.SaveChanges();
                             break;
                         default:
                             break;
                     }
-                    newMembership.customerID = thisPurchaseOrder.customerID;
-                    newMembership.expiryDate = DateTime.Now.AddYears(1);
-                    newMembership.lineItemID = i.lineItemID;
-                    db.MembershipEntries.Add(newMembership);
+                }
+            }
+        }
+
+        /// <summary>
+        /// checks to see if there is a physical product (IE Book, as videos are watched online) and if so
+        /// generates a shipping slip entry
+        /// </summary>
+        /// <param name="thisPurchaseOrder"></param>
+        private void checkShipping(PurchaseOrder thisPurchaseOrder)
+        {
+            using (var db = new FBVDatabaseContext())
+            {
+                bool needsShipping = false;
+                foreach(LineItems i in thisPurchaseOrder.purchaseOrderItems)
+                {
+                    if(i.orderItemType == OrderItemType.Book)
+                    {
+                        needsShipping = true;
+                    }
+                }
+
+                if (needsShipping)
+                {
+                    Customer thisCustomer = db.Customers.Find(thisPurchaseOrder.customerID);
+                    ShippingSlip newSlip = db.ShippingSlips.Create();
+                    newSlip.purchaseOrderID = thisPurchaseOrder.purchaseOrderID;
+                    newSlip.shippingAddress = thisCustomer.address;
+                    newSlip.shippingName = thisCustomer.customerName;
+
+                    db.ShippingSlips.Add(newSlip);
+                    db.SaveChanges();
                 }
             }
         }

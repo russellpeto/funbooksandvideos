@@ -14,5 +14,6 @@ namespace FBV
         public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<PurchaseOrder> PurchaseOrders { get; set; }
         public DbSet<MembershipEntry> MembershipEntries { get; set; }
+        public DbSet<ShippingSlip> ShippingSlips { get; set; }
     }
 }
